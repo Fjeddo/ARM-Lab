@@ -14,7 +14,11 @@ Write-Host "...done (Setting parameters)`n`n" -ForegroundColor Green
 # Create/ensure resource group
 Write-Host "Creating/ensuring resourcegroup..." -ForegroundColor Yellow
 
-New-AzResourceGroup -Name $resourceGroupName -Location 'North Europe' -Force
+New-AzSubscriptionDeployment `
+    -Location 'northeurope' `
+    -TemplateFile 'rg.json' `
+    -resourceGroupName $resourceGroupName `
+    -resourceGroupLocation 'northeurope'
 
 Write-Host "...done (Creating/ensuring resourcegroup)`n`n" -ForegroundColor Green
 
